@@ -61,7 +61,7 @@ The variable labels were converted to sentence case, without spaces as a comprom
 ### 3.2 List of feature types and description of labels
 *Identification columns* 
 
-column # |label |description of label |type of data
+Column # |Label |Description of label |Type of data
 ---------|---------|----------------------------------------------------|-------------------
 1        |subject  |The person performing the given activities          | Integer (1-30)
 2        |activity |The activity being performed by the subject        | Factor (see section 2.2.2)  
