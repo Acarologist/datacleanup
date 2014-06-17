@@ -1,3 +1,5 @@
+# Author: Alexander Smith, PhD
+
 run_analysis <- function() {
     # Load required library
     require(plyr)

@@ -1,5 +1,6 @@
 Code book: run_analysis.R
 ========================================================
+Author: Alexander Smith, PhD
 
 This is the code book associated with the run_analysis.R script. It contains information about the data analyzed by the run_analysis.R script, and how the data was analyzed. 
 
@@ -50,6 +51,9 @@ As part of the analysis, only variables containing `mean` or `standard deviation
 
 **Note:** These values were chosen, and the columns containing the `meanFreq` and `angle` data were discarded due to the fact that the instructions for this assignment indicated to take only the measurements on the mean and standard deviation for each measurement. Because both the `meanFreq` data consisted of a weighted average of the frequency data, and the `angle` data measured the angle between two vectors, I chose to exclude them from the analysis. This left only the mean and standard deviation values for the remaining 33 feature variables (for a total of 66 numeric variables). 
 
+### 2.5 Calculation of the mean of the numeric data columns
+The `ddply` function from the `plyr package` was used calculate the average (mean) value of each of the columns, for each subject and each activity. For example, the average value for the column "TimeBodyAccelerometricMeanX" (column 3 of the tidy.clean dataset) was calculated for subject 1, while walking, walking upstairs, walking downstairs, sitting, standing, and laying down. This process was repeated for each of the 30 subjects. The resultant dataset consists of 180 observations (`30 subjects * 6 activities = 180`), and 68 variables ("subject", "activity", and 66 "MeanOf____" numeric variables - please see **Appendix 1** for a list of all columns in each dataset). 
+
 ## 3. Variable (feature) labels of the tidy datasets
 ### 3.1 Explaination of labelling choices
 The variable labels were converted to sentence case, without spaces as a compromise between readability and convenience of reference within R. Although many prefer labels to be in all lowercase, it is my opinion that sentence case makes distinguishing between the words of the label much easier, particularly when very long variable names are used. Underscores and spaces were avoided in the labels to minimize typing if one needs to reference a particular variable in downstream analyses. I personally find these expanded names to be awkward and unwieldy, and were this analysis for my personal use, I would have kept the original feature descriptions (after removing the R unfriendly characters). However, as the course project requirements state to make the names descriptive, I have done so.
@@ -61,7 +65,7 @@ The variable labels were converted to sentence case, without spaces as a comprom
 ### 3.2 List of feature types and description of labels
 *Identification columns* 
 
-column # |label |description of label |type of data
+Column # |Label |Description of label |Type of data
 ---------|---------|----------------------------------------------------|-------------------
 1        |subject  |The person performing the given activities          | Integer (1-30)
 2        |activity |The activity being performed by the subject        | Factor (see section 2.2.2)  
@@ -99,7 +103,7 @@ These files can be read into R using the read.csv() command.  However, the defau
 
 Note that `tidy.clean` is a large dataset of 10299 observations of 68 variables whereas `tidy.mean` is a relatively small dataset of 180 observations of 68 variables.  
 
-If your computer does not have sufficient memory to maintain both datasets in memory, please comment out `line 113` and `line 114` in the run_analysis.R file to prevent R from loading these datasets into memory. You can then use the read.csv() function to load one or the other into R if you so desire. 
+If your computer does not have sufficient memory to maintain both datasets in memory, please comment out `line 115` and `line 116` in the run_analysis.R file to prevent R from loading these datasets into memory. You can then use the read.csv() function to load one or the other into R if you so desire. 
 
 ## Appendix 1
 ### Columns present in tidy.clean dataset
